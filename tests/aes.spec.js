@@ -72,10 +72,12 @@ test("mobile navigation, FAQ accordion, and contact validation work", async ({ p
   await expect(page.locator("details").first()).toHaveAttribute("open", "");
   await page.goto(`${baseUrl}/en/contact/`);
   await page.getByRole("button", { name: "Submit Request" }).click();
-  await expect(page.locator(".form-message")).toContainText("Please complete");
+  await expect(page.locator(".form-message")).toContainText("Name");
+  await expect(page.locator(".form-message")).toContainText("Email");
+  await expect(page.locator(".form-message")).toContainText("Service Needed");
 });
 
-test("contact WhatsApp button opens encoded message without changing page URL", async ({ page, context }) => {
+test("contact submit opens encoded WhatsApp message without changing page URL", async ({ page, context }) => {
   await page.goto(`${baseUrl}/en/contact/`);
   await page.locator('[name="name"]').fill("Mahmoud Mostafa");
   await page.locator('[name="email"]').fill("mahmoud@example.com");
@@ -85,7 +87,7 @@ test("contact WhatsApp button opens encoded message without changing page URL", 
   await page.locator('[name="message"]').fill("I need a consultation about tax compliance in Egypt.");
   const before = page.url();
   const popupPromise = context.waitForEvent("page");
-  await page.getByRole("button", { name: "Send Request on WhatsApp" }).click();
+  await page.getByRole("button", { name: "Submit Request" }).click();
   const popup = await popupPromise;
   expect(page.url()).toBe(before);
   const popupUrl = decodeURIComponent(decodeURIComponent(popup.url())).replace(/\+/g, " ");
