@@ -67,6 +67,9 @@ test("English and Arabic home pages render with assets and correct direction", a
 test("mobile navigation, FAQ accordion, and contact validation work", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(`${baseUrl}/en/`);
+  await expect(page.locator(".mobile-bottom-cta")).toBeVisible();
+  await expect(page.locator(".mobile-bottom-cta").getByRole("link", { name: "Call" })).toHaveAttribute("href", "tel:+0233050685");
+  await expect(page.locator(".mobile-bottom-cta").getByRole("link", { name: "Submit Request" })).toHaveAttribute("href", /https:\/\/wa\.me\//);
   await page.getByRole("button", { name: "Open menu" }).click();
   await expect(page.locator(".main-nav")).toHaveClass(/is-open/);
   await page.goto(`${baseUrl}/en/faq/`);

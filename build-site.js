@@ -1073,6 +1073,10 @@ ${body}
     </main>
 ${footer(lang, slug)}
     <a class="floating-whatsapp" href="${waHref(lang)}" target="_blank" rel="noopener" aria-label="${esc(l.cta.whatsappContact)}"><span>WhatsApp</span></a>
+    <div class="mobile-bottom-cta" aria-label="${lang === "ar" ? "إجراءات التواصل السريعة" : "Quick contact actions"}">
+      <a class="mobile-call" href="tel:${config.phone.replace(/\s/g, "")}">${lang === "ar" ? "اتصال" : "Call"}</a>
+      <a class="mobile-submit" href="${waHref(lang)}" target="_blank" rel="noopener">${esc(l.cta.whatsappContact)}</a>
+    </div>
     <script src="${assetPath("js/main.js", lang, slug)}" defer></script>
   </body>
 </html>`;
@@ -1458,6 +1462,8 @@ const trustSignalCss = `.trust-section{padding:42px 0;background:#fff}.hero+.tru
 
 const documentsNeededCss = `.documents-needed{margin-top:20px}.documents-needed .detail-block{background:#fbfcfe;border-color:#d9e0ea}.documents-needed .detail-block h2{display:flex;align-items:center;gap:10px}.documents-needed .detail-block h2:before{content:"";display:inline-block;width:34px;height:4px;background:var(--gold);border-radius:999px}.documents-needed ul{columns:2;column-gap:34px}.documents-needed li{break-inside:avoid;margin-bottom:8px}@media (max-width:820px){.documents-needed ul{columns:1}}`;
 
+const mobileBottomCtaCss = `.mobile-bottom-cta{display:none}@media (max-width:820px){body{padding-bottom:82px}.floating-whatsapp{display:none}.mobile-bottom-cta{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:.9fr 1.1fr;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid var(--line);box-shadow:0 -12px 30px rgba(16,24,39,.12);backdrop-filter:blur(14px)}.mobile-bottom-cta a{min-height:48px;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-weight:900}.mobile-call{background:#fff;color:var(--navy);border:1px solid #cdd4df}.mobile-submit{background:var(--green);color:#fff}}`;
+
 const js = `(function(){const body=document.body;const lang=body.dataset.lang||"en";const number=body.dataset.whatsapp||"201XXXXXXXXX";const labels={en:{ok:"Opening WhatsApp with your request.",err:"Please complete or correct: ",intro:"Hello AES Egypt,\\nI would like to request a consultation.",name:"Name",email:"Email",phone:"Phone",company:"Company",service:"Service Needed",message:"Message"},ar:{ok:"سيتم فتح واتساب وإرسال بيانات طلبك.",err:"يرجى استكمال أو تصحيح: ",intro:"مرحبًا AES Egypt،\\nأرغب في طلب استشارة.",name:"الاسم",email:"البريد الإلكتروني",phone:"رقم الهاتف",company:"اسم الشركة",service:"الخدمة المطلوبة",message:"الرسالة"}};document.querySelectorAll(".nav-toggle").forEach((button)=>{button.addEventListener("click",()=>{const nav=document.querySelector(".main-nav");const open=nav.classList.toggle("is-open");button.setAttribute("aria-expanded",String(open));});});function clean(v){return String(v||"").trim().replace(/\\s+/g," ");}function validEmail(v){return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(v);}function formData(form){return {name:clean(form.name.value),email:clean(form.email.value),phone:clean(form.phone.value),company:clean(form.company.value),service:clean(form.service.value),message:clean(form.message.value),website:clean(form.website.value)}}function missingFields(data){const t=labels[lang];const fields=[];if(data.website)fields.push("Spam check");if(data.name.length<2)fields.push(t.name);if(!validEmail(data.email))fields.push(t.email);if(data.phone.length<6)fields.push(t.phone);if(data.company.length<2)fields.push(t.company);if(!data.service)fields.push(t.service);if(data.message.length<10)fields.push(t.message);return fields;}function message(data){const t=labels[lang];return [t.intro,"",t.name+": "+data.name,t.email+": "+data.email,t.phone+": "+data.phone,t.company+": "+data.company,t.service+": "+data.service,t.message+": "+data.message].join("\\n");}function setStatus(form,type,text){const node=form.querySelector(".form-message");node.textContent=text;node.className="form-message "+type;}function openWhatsApp(data){window.open("https://wa.me/"+number+"?text="+encodeURIComponent(message(data)),"_blank","noopener");}document.querySelectorAll("[data-contact-form]").forEach((form)=>{form.addEventListener("submit",(event)=>{event.preventDefault();const data=formData(form);const missing=missingFields(data);if(missing.length){setStatus(form,"err",labels[lang].err+missing.join(", "));return;}setStatus(form,"ok",labels[lang].ok);openWhatsApp(data);});});})();`;
 
 function write(file, contents) {
@@ -1474,7 +1480,7 @@ function cleanGenerated() {
 
 function build() {
   cleanGenerated();
-  write(path.join(outDir, "assets", "css", "style.css"), `${css}\n${contactMapCss}\n${trustSignalCss}\n${documentsNeededCss}`);
+  write(path.join(outDir, "assets", "css", "style.css"), `${css}\n${contactMapCss}\n${trustSignalCss}\n${documentsNeededCss}\n${mobileBottomCtaCss}`);
   write(path.join(outDir, "assets", "js", "main.js"), js);
   fs.mkdirSync(path.join(outDir, "assets", "images"), { recursive: true });
   fs.copyFileSync(uploadedAssets.logo, path.join(outDir, "assets", "images", "aes-logo.png"));
