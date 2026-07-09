@@ -41,6 +41,7 @@ const labels = {
       whatsapp: "Submit Request",
       whatsappConsult: "Submit Request",
       whatsappContact: "Submit Request",
+      requestService: "Request This Service",
       learnMore: "Learn More",
       submit: "Submit Request",
     },
@@ -95,6 +96,7 @@ const labels = {
       whatsapp: "إرسال الطلب",
       whatsappConsult: "إرسال الطلب",
       whatsappContact: "إرسال الطلب",
+      requestService: "اطلب هذه الخدمة",
       learnMore: "اعرف المزيد",
       submit: "إرسال الطلب",
     },
@@ -1036,7 +1038,7 @@ function cards(lang) {
         <p>${esc(service[lang].short)}</p>
         <div class="card-actions">
           <a class="btn btn-secondary" href="${pagePath(lang, `services/${service.slug}`)}">${esc(l.cta.learnMore)}</a>
-          <a class="btn btn-whatsapp" href="${waHref(lang, `${lang === "ar" ? "مرحبًا AES Egypt،\nأرغب في طلب خدمة: " : "Hello AES Egypt,\nI would like to request: "}${service[lang].title}`)}" target="_blank" rel="noopener">${esc(l.cta.whatsapp)}</a>
+          <a class="btn btn-whatsapp" href="${waHref(lang, `${lang === "ar" ? "مرحبًا AES Egypt،\nأرغب في طلب خدمة: " : "Hello AES Egypt,\nI would like to request: "}${service[lang].title}`)}" target="_blank" rel="noopener">${esc(l.cta.requestService)}</a>
         </div>
       </article>`).join("")}
   </div>`;
@@ -1207,7 +1209,7 @@ function servicePage(lang, service) {
         <div><h2>${esc(s.title)}</h2><p>${esc(lang === "ar" ? "أرسل طلبك الآن وسيقوم فريق AES Egypt بتحديد الخطوة المهنية المناسبة." : "Send your request now and AES Egypt will help define the right professional next step.")}</p></div>
         <div class="cta-actions">
           <a class="btn btn-primary" href="${pagePath(lang, "contact")}">${esc(l.cta.consultation)}</a>
-          <a class="btn btn-whatsapp" href="${waHref(lang, `${lang === "ar" ? "مرحبًا AES Egypt،\nأرغب في طلب خدمة: " : "Hello AES Egypt,\nI would like to request: "}${s.title}`)}" target="_blank" rel="noopener">${esc(l.cta.whatsapp)}</a>
+          <a class="btn btn-whatsapp" href="${waHref(lang, `${lang === "ar" ? "مرحبًا AES Egypt،\nأرغب في طلب خدمة: " : "Hello AES Egypt,\nI would like to request: "}${s.title}`)}" target="_blank" rel="noopener">${esc(l.cta.requestService)}</a>
         </div>
       </div>
     </section>`;
