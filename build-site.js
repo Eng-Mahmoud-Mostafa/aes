@@ -76,6 +76,7 @@ const labels = {
     benefits: "Key Benefits",
     provides: "What AES Egypt Provides",
     process: "Our Process",
+    documentsNeeded: "Documents Needed",
   },
   ar: {
     locale: "ar_EG",
@@ -131,6 +132,7 @@ const labels = {
     benefits: "أهم المزايا",
     provides: "ما الذي تقدمه AES Egypt",
     process: "منهجية العمل",
+    documentsNeeded: "المستندات المطلوبة",
   },
 };
 
@@ -166,6 +168,12 @@ const services = [
         "Perform audit and review procedures with management follow-up.",
         "Deliver clear findings, reports, and next-step recommendations.",
       ],
+      documentsNeeded: [
+        "Latest financial statements or trial balance.",
+        "General ledger, bank statements, and key reconciliations.",
+        "Tax filings, invoices, contracts, and supporting schedules.",
+        "Company registration documents and prior audit reports, if available.",
+      ],
     },
     ar: {
       title: "التدقيق والمراجعة",
@@ -194,6 +202,12 @@ const services = [
         "تخطيط العمل وتحديد المستندات والجداول الزمنية.",
         "تنفيذ إجراءات التدقيق والمتابعة مع الإدارة.",
         "تقديم نتائج واضحة وتقارير وتوصيات للخطوات التالية.",
+      ],
+      documentsNeeded: [
+        "أحدث قوائم مالية أو ميزان مراجعة.",
+        "دفتر الأستاذ وكشوف الحسابات البنكية والتسويات الرئيسية.",
+        "الإقرارات الضريبية والفواتير والعقود والجداول الداعمة.",
+        "مستندات تسجيل الشركة وتقارير المراجعة السابقة إن وجدت.",
       ],
     },
   },
@@ -228,6 +242,12 @@ const services = [
         "Maintain records and reconcile accounts regularly.",
         "Deliver periodic reports with clear follow-up items.",
       ],
+      documentsNeeded: [
+        "Bank statements and cash movement records.",
+        "Sales invoices, purchase invoices, and expense documents.",
+        "Payroll summaries, supplier/customer balances, and contracts.",
+        "Existing chart of accounts, accounting files, or prior reports if available.",
+      ],
     },
     ar: {
       title: "الخدمات المحاسبية",
@@ -256,6 +276,12 @@ const services = [
         "تحديد دورية التقارير والمسؤوليات وتدفق المستندات.",
         "تحديث السجلات وتسوية الحسابات بانتظام.",
         "تقديم تقارير دورية تتضمن نقاط متابعة واضحة.",
+      ],
+      documentsNeeded: [
+        "كشوف الحسابات البنكية وحركة النقدية.",
+        "فواتير المبيعات والمشتريات ومستندات المصروفات.",
+        "ملخصات الرواتب وأرصدة الموردين والعملاء والعقود.",
+        "دليل الحسابات أو ملفات المحاسبة أو التقارير السابقة إن وجدت.",
       ],
     },
   },
@@ -290,6 +316,12 @@ const services = [
         "Prepare recommendations and coordinate required actions.",
         "Monitor deadlines and support ongoing compliance.",
       ],
+      documentsNeeded: [
+        "Tax registration details and recent tax filings.",
+        "Commercial register, tax card, and VAT registration if applicable.",
+        "Sales and purchase invoices, payroll records, and withholding documents.",
+        "Relevant contracts, correspondence, assessments, or notices from authorities.",
+      ],
     },
     ar: {
       title: "الخدمات الضريبية والقانونية",
@@ -318,6 +350,12 @@ const services = [
         "جمع ومراجعة المستندات الداعمة.",
         "إعداد التوصيات وتنسيق الإجراءات المطلوبة.",
         "متابعة المواعيد ودعم الالتزام المستمر.",
+      ],
+      documentsNeeded: [
+        "بيانات التسجيل الضريبي وأحدث الإقرارات الضريبية.",
+        "السجل التجاري والبطاقة الضريبية وتسجيل ضريبة القيمة المضافة إن وجد.",
+        "فواتير المبيعات والمشتريات وسجلات الرواتب ومستندات الخصم والتحصيل.",
+        "العقود والمراسلات أو المطالبات أو الإخطارات الصادرة من الجهات المختصة.",
       ],
     },
   },
@@ -414,6 +452,12 @@ const services = [
         "Coordinate formation steps and follow-up requirements.",
         "Prepare the company for accounting, tax, and reporting obligations.",
       ],
+      documentsNeeded: [
+        "Proposed company name, business activity, and ownership structure.",
+        "Shareholder or partner identification documents.",
+        "Proof of address and contact details for shareholders or representatives.",
+        "Power of attorney, board approvals, or parent-company documents when applicable.",
+      ],
     },
     ar: {
       title: "تأسيس الشركات",
@@ -442,6 +486,12 @@ const services = [
         "تحديد المستندات المطلوبة ومسار التسجيل.",
         "تنسيق خطوات التأسيس والمتابعة.",
         "إعداد الشركة للالتزامات المحاسبية والضريبية والتقارير.",
+      ],
+      documentsNeeded: [
+        "اسم الشركة المقترح والنشاط وهيكل الملكية.",
+        "مستندات إثبات شخصية الشركاء أو المساهمين.",
+        "إثبات العنوان وبيانات التواصل للشركاء أو الممثلين.",
+        "التوكيلات أو موافقات مجلس الإدارة أو مستندات الشركة الأم عند الحاجة.",
       ],
     },
   },
@@ -1221,6 +1271,9 @@ function servicePage(lang, service) {
     areaServed: "Egypt",
     serviceType: s.title,
   };
+  const documentsSection = s.documentsNeeded
+    ? `\n      <div class="container documents-needed">${detailBlock(l.documentsNeeded, s.documentsNeeded)}</div>`
+    : "";
   const body = `
     ${subHero(lang, s.h1, s.description)}
     <section class="section">
@@ -1229,7 +1282,7 @@ function servicePage(lang, service) {
         ${detailBlock(l.benefits, s.benefits)}
         ${detailBlock(l.provides, s.provides)}
         ${detailBlock(l.process, s.process, true)}
-      </div>
+      </div>${documentsSection}
     </section>
     <section class="section soft">
       <div class="container section-head">
@@ -1403,6 +1456,8 @@ const contactMapCss = `.map-card{margin-top:24px;display:grid;grid-template-colu
 
 const trustSignalCss = `.trust-section{padding:42px 0;background:#fff}.hero+.trust-section{padding-top:28px}.sub-hero+.trust-section{background:var(--soft)}.trust-panel{display:grid;grid-template-columns:.72fr 1.28fr;gap:24px;align-items:start;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:0 12px 30px rgba(16,24,39,.06);padding:24px}.trust-intro h2{font-size:clamp(1.45rem,2.8vw,2.15rem);line-height:1.15;color:var(--navy);margin:0 0 10px}.trust-intro p{color:var(--muted);margin:0}.trust-signal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.trust-signal-grid article{border:1px solid var(--line);border-radius:var(--radius);padding:18px;background:#fbfcfe}.trust-signal-grid span{display:block;width:32px;height:4px;background:var(--gold);margin-bottom:14px}.trust-signal-grid h3{font-size:1rem;line-height:1.25;color:var(--navy);margin:0 0 8px}.trust-signal-grid p{color:var(--muted);margin:0;font-size:.95rem}@media (max-width:820px){.trust-section{padding:28px 0}.trust-panel,.trust-signal-grid{grid-template-columns:1fr}.trust-panel{padding:18px}}`;
 
+const documentsNeededCss = `.documents-needed{margin-top:20px}.documents-needed .detail-block{background:#fbfcfe;border-color:#d9e0ea}.documents-needed .detail-block h2{display:flex;align-items:center;gap:10px}.documents-needed .detail-block h2:before{content:"";display:inline-block;width:34px;height:4px;background:var(--gold);border-radius:999px}.documents-needed ul{columns:2;column-gap:34px}.documents-needed li{break-inside:avoid;margin-bottom:8px}@media (max-width:820px){.documents-needed ul{columns:1}}`;
+
 const js = `(function(){const body=document.body;const lang=body.dataset.lang||"en";const number=body.dataset.whatsapp||"201XXXXXXXXX";const labels={en:{ok:"Opening WhatsApp with your request.",err:"Please complete or correct: ",intro:"Hello AES Egypt,\\nI would like to request a consultation.",name:"Name",email:"Email",phone:"Phone",company:"Company",service:"Service Needed",message:"Message"},ar:{ok:"سيتم فتح واتساب وإرسال بيانات طلبك.",err:"يرجى استكمال أو تصحيح: ",intro:"مرحبًا AES Egypt،\\nأرغب في طلب استشارة.",name:"الاسم",email:"البريد الإلكتروني",phone:"رقم الهاتف",company:"اسم الشركة",service:"الخدمة المطلوبة",message:"الرسالة"}};document.querySelectorAll(".nav-toggle").forEach((button)=>{button.addEventListener("click",()=>{const nav=document.querySelector(".main-nav");const open=nav.classList.toggle("is-open");button.setAttribute("aria-expanded",String(open));});});function clean(v){return String(v||"").trim().replace(/\\s+/g," ");}function validEmail(v){return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(v);}function formData(form){return {name:clean(form.name.value),email:clean(form.email.value),phone:clean(form.phone.value),company:clean(form.company.value),service:clean(form.service.value),message:clean(form.message.value),website:clean(form.website.value)}}function missingFields(data){const t=labels[lang];const fields=[];if(data.website)fields.push("Spam check");if(data.name.length<2)fields.push(t.name);if(!validEmail(data.email))fields.push(t.email);if(data.phone.length<6)fields.push(t.phone);if(data.company.length<2)fields.push(t.company);if(!data.service)fields.push(t.service);if(data.message.length<10)fields.push(t.message);return fields;}function message(data){const t=labels[lang];return [t.intro,"",t.name+": "+data.name,t.email+": "+data.email,t.phone+": "+data.phone,t.company+": "+data.company,t.service+": "+data.service,t.message+": "+data.message].join("\\n");}function setStatus(form,type,text){const node=form.querySelector(".form-message");node.textContent=text;node.className="form-message "+type;}function openWhatsApp(data){window.open("https://wa.me/"+number+"?text="+encodeURIComponent(message(data)),"_blank","noopener");}document.querySelectorAll("[data-contact-form]").forEach((form)=>{form.addEventListener("submit",(event)=>{event.preventDefault();const data=formData(form);const missing=missingFields(data);if(missing.length){setStatus(form,"err",labels[lang].err+missing.join(", "));return;}setStatus(form,"ok",labels[lang].ok);openWhatsApp(data);});});})();`;
 
 function write(file, contents) {
@@ -1419,7 +1474,7 @@ function cleanGenerated() {
 
 function build() {
   cleanGenerated();
-  write(path.join(outDir, "assets", "css", "style.css"), `${css}\n${contactMapCss}\n${trustSignalCss}`);
+  write(path.join(outDir, "assets", "css", "style.css"), `${css}\n${contactMapCss}\n${trustSignalCss}\n${documentsNeededCss}`);
   write(path.join(outDir, "assets", "js", "main.js"), js);
   fs.mkdirSync(path.join(outDir, "assets", "images"), { recursive: true });
   fs.copyFileSync(uploadedAssets.logo, path.join(outDir, "assets", "images", "aes-logo.png"));

@@ -26,6 +26,12 @@ window.AES_SERVICES=[
         "Plan the engagement, request documents, and define timelines.",
         "Perform audit and review procedures with management follow-up.",
         "Deliver clear findings, reports, and next-step recommendations."
+      ],
+      "documentsNeeded": [
+        "Latest financial statements or trial balance.",
+        "General ledger, bank statements, and key reconciliations.",
+        "Tax filings, invoices, contracts, and supporting schedules.",
+        "Company registration documents and prior audit reports, if available."
       ]
     },
     "ar": {
@@ -53,6 +59,12 @@ window.AES_SERVICES=[
         "تخطيط العمل وتحديد المستندات والجداول الزمنية.",
         "تنفيذ إجراءات التدقيق والمتابعة مع الإدارة.",
         "تقديم نتائج واضحة وتقارير وتوصيات للخطوات التالية."
+      ],
+      "documentsNeeded": [
+        "أحدث قوائم مالية أو ميزان مراجعة.",
+        "دفتر الأستاذ وكشوف الحسابات البنكية والتسويات الرئيسية.",
+        "الإقرارات الضريبية والفواتير والعقود والجداول الداعمة.",
+        "مستندات تسجيل الشركة وتقارير المراجعة السابقة إن وجدت."
       ]
     }
   },
@@ -83,6 +95,12 @@ window.AES_SERVICES=[
         "Agree on reporting cadence, responsibilities, and document flow.",
         "Maintain records and reconcile accounts regularly.",
         "Deliver periodic reports with clear follow-up items."
+      ],
+      "documentsNeeded": [
+        "Bank statements and cash movement records.",
+        "Sales invoices, purchase invoices, and expense documents.",
+        "Payroll summaries, supplier/customer balances, and contracts.",
+        "Existing chart of accounts, accounting files, or prior reports if available."
       ]
     },
     "ar": {
@@ -110,6 +128,12 @@ window.AES_SERVICES=[
         "تحديد دورية التقارير والمسؤوليات وتدفق المستندات.",
         "تحديث السجلات وتسوية الحسابات بانتظام.",
         "تقديم تقارير دورية تتضمن نقاط متابعة واضحة."
+      ],
+      "documentsNeeded": [
+        "كشوف الحسابات البنكية وحركة النقدية.",
+        "فواتير المبيعات والمشتريات ومستندات المصروفات.",
+        "ملخصات الرواتب وأرصدة الموردين والعملاء والعقود.",
+        "دليل الحسابات أو ملفات المحاسبة أو التقارير السابقة إن وجدت."
       ]
     }
   },
@@ -140,6 +164,12 @@ window.AES_SERVICES=[
         "Collect and review supporting documents.",
         "Prepare recommendations and coordinate required actions.",
         "Monitor deadlines and support ongoing compliance."
+      ],
+      "documentsNeeded": [
+        "Tax registration details and recent tax filings.",
+        "Commercial register, tax card, and VAT registration if applicable.",
+        "Sales and purchase invoices, payroll records, and withholding documents.",
+        "Relevant contracts, correspondence, assessments, or notices from authorities."
       ]
     },
     "ar": {
@@ -167,6 +197,12 @@ window.AES_SERVICES=[
         "جمع ومراجعة المستندات الداعمة.",
         "إعداد التوصيات وتنسيق الإجراءات المطلوبة.",
         "متابعة المواعيد ودعم الالتزام المستمر."
+      ],
+      "documentsNeeded": [
+        "بيانات التسجيل الضريبي وأحدث الإقرارات الضريبية.",
+        "السجل التجاري والبطاقة الضريبية وتسجيل ضريبة القيمة المضافة إن وجد.",
+        "فواتير المبيعات والمشتريات وسجلات الرواتب ومستندات الخصم والتحصيل.",
+        "العقود والمراسلات أو المطالبات أو الإخطارات الصادرة من الجهات المختصة."
       ]
     }
   },
@@ -254,6 +290,12 @@ window.AES_SERVICES=[
         "Identify required documents and registration path.",
         "Coordinate formation steps and follow-up requirements.",
         "Prepare the company for accounting, tax, and reporting obligations."
+      ],
+      "documentsNeeded": [
+        "Proposed company name, business activity, and ownership structure.",
+        "Shareholder or partner identification documents.",
+        "Proof of address and contact details for shareholders or representatives.",
+        "Power of attorney, board approvals, or parent-company documents when applicable."
       ]
     },
     "ar": {
@@ -281,6 +323,12 @@ window.AES_SERVICES=[
         "تحديد المستندات المطلوبة ومسار التسجيل.",
         "تنسيق خطوات التأسيس والمتابعة.",
         "إعداد الشركة للالتزامات المحاسبية والضريبية والتقارير."
+      ],
+      "documentsNeeded": [
+        "اسم الشركة المقترح والنشاط وهيكل الملكية.",
+        "مستندات إثبات شخصية الشركاء أو المساهمين.",
+        "إثبات العنوان وبيانات التواصل للشركاء أو الممثلين.",
+        "التوكيلات أو موافقات مجلس الإدارة أو مستندات الشركة الأم عند الحاجة."
       ]
     }
   },

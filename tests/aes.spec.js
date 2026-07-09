@@ -77,6 +77,9 @@ test("mobile navigation, FAQ accordion, and contact validation work", async ({ p
   await expect(page.locator(".form-message")).toContainText("Name");
   await expect(page.locator(".form-message")).toContainText("Email");
   await expect(page.locator(".form-message")).toContainText("Service Needed");
+  await page.goto(`${baseUrl}/en/services/audit-assurance/`);
+  await expect(page.locator(".documents-needed")).toContainText("Documents Needed");
+  await expect(page.locator(".documents-needed")).toContainText("Latest financial statements");
 });
 
 test("contact submit opens encoded WhatsApp message without changing page URL", async ({ page, context }) => {
