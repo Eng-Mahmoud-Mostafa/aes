@@ -7,6 +7,7 @@ window.AES_CONFIG={
   "addressAr": "57 شارع القدس الشريف، ميدان لبنان، المهندسين، الجيزة، مصر",
   "siteUrl": "https://aes.com.eg",
   "logo": "/assets/images/aes-logo.png",
+  "icon": "/assets/images/aes-mark.png",
   "founder": "/assets/images/founder.jpg",
   "year": "2026"
 };

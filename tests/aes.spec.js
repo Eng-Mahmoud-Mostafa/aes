@@ -58,6 +58,7 @@ test("English and Arabic home pages render with assets and correct direction", a
   await expect(page.locator(".trust-signal-grid")).toContainText("Confidential advisory process");
   await expect(page.locator(".trust-signal-grid")).toContainText("Audit, tax, accounting, and advisory under one firm");
   await expect(page.locator(".hero-panel source[type='image/webp']")).toHaveAttribute("srcset", /founder\.webp/);
+  await expect(page.locator('link[rel="icon"]')).toHaveAttribute("href", /aes-mark\.png/);
   await expect(page.locator(".brand img")).toHaveJSProperty("complete", true);
   await expect(page.locator("html")).toHaveAttribute("dir", "ltr");
   await page.goto(`${baseUrl}/ar/`);

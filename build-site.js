@@ -12,12 +12,14 @@ const config = {
   addressAr: "57 شارع القدس الشريف، ميدان لبنان، المهندسين، الجيزة، مصر",
   siteUrl: "https://aes.com.eg",
   logo: "/assets/images/aes-logo.png",
+  icon: "/assets/images/aes-mark.png",
   founder: "/assets/images/founder.jpg",
   year: "2026",
 };
 
 const uploadedAssets = {
   logo: path.join(__dirname, "source-assets", "aes-logo.png"),
+  icon: path.join(__dirname, "source-assets", "aes-mark.png"),
   founder: path.join(__dirname, "source-assets", "founder.jpg"),
   founderWebp: path.join(__dirname, "source-assets", "founder.webp"),
 };
@@ -1053,7 +1055,8 @@ function seo({ lang, slug, title, desc, schema = [] }) {
     <meta name="twitter:title" content="${esc(title)}">
     <meta name="twitter:description" content="${esc(desc)}">
     <meta name="twitter:image" content="${image}">
-    <link rel="icon" href="${assetPath("images/aes-logo.png", lang, slug)}">
+    <link rel="icon" type="image/png" href="${assetPath("images/aes-mark.png", lang, slug)}">
+    <link rel="apple-touch-icon" href="${assetPath("images/aes-mark.png", lang, slug)}">
     <link rel="stylesheet" href="${assetPath("css/style.css", lang, slug)}">
     <script type="application/ld+json">${JSON.stringify(orgSchema)}</script>
     <script type="application/ld+json">${JSON.stringify(breadcrumb)}</script>
@@ -1493,6 +1496,7 @@ function build() {
   write(path.join(outDir, "assets", "js", "main.js"), js);
   fs.mkdirSync(path.join(outDir, "assets", "images"), { recursive: true });
   fs.copyFileSync(uploadedAssets.logo, path.join(outDir, "assets", "images", "aes-logo.png"));
+  fs.copyFileSync(uploadedAssets.icon, path.join(outDir, "assets", "images", "aes-mark.png"));
   fs.copyFileSync(uploadedAssets.founder, path.join(outDir, "assets", "images", "founder.jpg"));
   fs.copyFileSync(uploadedAssets.founderWebp, path.join(outDir, "assets", "images", "founder.webp"));
   write(path.join(outDir, "assets", "data", "config.js"), `window.AES_CONFIG=${JSON.stringify(config, null, 2)};\n`);
