@@ -1061,6 +1061,38 @@ function cta(lang) {
   </section>`;
 }
 
+function trustSignals(lang) {
+  const title = lang === "ar" ? "لماذا يثق العملاء في AES Egypt" : "Trusted Professional Support";
+  const intro = lang === "ar"
+    ? "مؤشرات مهنية واضحة تعكس طريقة عمل AES Egypt مع الشركات والمستثمرين داخل مصر."
+    : "Clear professional signals that reflect how AES Egypt supports companies and investors in Egypt.";
+  const items = lang === "ar"
+    ? [
+        ["تأسست عام 1996", "خبرة طويلة في دعم الشركات بخدمات مهنية منظمة."],
+        ["منهج استشاري يحافظ على السرية", "التعامل مع بيانات العملاء ومستنداتهم بعناية مهنية."],
+        ["خدمات للشركات المحلية والأجنبية", "دعم للشركات المصرية والمستثمرين الداخلين إلى السوق المصري."],
+        ["التدقيق والضرائب والمحاسبة والاستشارات تحت مظلة واحدة", "ربط الالتزام المالي والضريبي والاستشاري بصورة عملية."],
+      ]
+    : [
+        ["Established in 1996", "Long-standing professional support for companies in Egypt."],
+        ["Confidential advisory process", "Client documents, financial information, and business details are handled with care."],
+        ["Local and foreign companies", "Support for Egyptian businesses and international investors entering the market."],
+        ["Audit, tax, accounting, and advisory under one firm", "Integrated guidance across compliance, reporting, and business decisions."],
+      ];
+  return `<section class="trust-section">
+    <div class="container trust-panel">
+      <div class="trust-intro">
+        <p class="eyebrow">${lang === "ar" ? "مؤشرات الثقة" : "Trust Signals"}</p>
+        <h2>${esc(title)}</h2>
+        <p>${esc(intro)}</p>
+      </div>
+      <div class="trust-signal-grid">
+        ${items.map(([heading, text]) => `<article><span></span><h3>${esc(heading)}</h3><p>${esc(text)}</p></article>`).join("")}
+      </div>
+    </div>
+  </section>`;
+}
+
 function homePage(lang) {
   const p = pageCopy[lang].home;
   const l = labels[lang];
@@ -1083,6 +1115,7 @@ function homePage(lang) {
       </div>
       <div class="container trust-row">${p.trust.map((item) => `<div><strong>${esc(item)}</strong></div>`).join("")}</div>
     </section>
+    ${trustSignals(lang)}
     <section class="section">
       <div class="container split">
         <div>
@@ -1166,6 +1199,7 @@ function servicesPage(lang) {
   const p = pageCopy[lang].services;
   const body = `
     ${subHero(lang, p.h1, p.intro)}
+    ${trustSignals(lang)}
     <section class="section">
       <div class="container">${cards(lang)}</div>
     </section>
@@ -1255,6 +1289,7 @@ function contactPage(lang) {
   const mapLinkText = lang === "ar" ? "فتح في خرائط Google" : "Open in Google Maps";
   const body = `
     ${subHero(lang, p.h1, p.intro)}
+    ${trustSignals(lang)}
     <section class="section">
       <div class="container contact-grid">
         <div class="contact-card">
@@ -1366,6 +1401,8 @@ const css = `:root{--navy:#101827;--charcoal:#1b2430;--muted:#5e6a78;--line:#e6e
 
 const contactMapCss = `.map-card{margin-top:24px;display:grid;grid-template-columns:.75fr 1.25fr;gap:24px;align-items:stretch;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:0 10px 26px rgba(16,24,39,.05);padding:22px}.map-copy{align-self:center}.map-copy h2{font-size:clamp(1.35rem,2.4vw,2rem);line-height:1.16;color:var(--navy);margin:0 0 10px}.map-copy p{color:var(--muted)}.map-card iframe{width:100%;min-height:310px;border:0;border-radius:var(--radius);background:var(--soft)}@media (max-width:820px){.map-card{grid-template-columns:1fr;gap:20px;padding:16px}.map-card iframe{min-height:250px}}`;
 
+const trustSignalCss = `.trust-section{padding:42px 0;background:#fff}.hero+.trust-section{padding-top:28px}.sub-hero+.trust-section{background:var(--soft)}.trust-panel{display:grid;grid-template-columns:.72fr 1.28fr;gap:24px;align-items:start;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:0 12px 30px rgba(16,24,39,.06);padding:24px}.trust-intro h2{font-size:clamp(1.45rem,2.8vw,2.15rem);line-height:1.15;color:var(--navy);margin:0 0 10px}.trust-intro p{color:var(--muted);margin:0}.trust-signal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.trust-signal-grid article{border:1px solid var(--line);border-radius:var(--radius);padding:18px;background:#fbfcfe}.trust-signal-grid span{display:block;width:32px;height:4px;background:var(--gold);margin-bottom:14px}.trust-signal-grid h3{font-size:1rem;line-height:1.25;color:var(--navy);margin:0 0 8px}.trust-signal-grid p{color:var(--muted);margin:0;font-size:.95rem}@media (max-width:820px){.trust-section{padding:28px 0}.trust-panel,.trust-signal-grid{grid-template-columns:1fr}.trust-panel{padding:18px}}`;
+
 const js = `(function(){const body=document.body;const lang=body.dataset.lang||"en";const number=body.dataset.whatsapp||"201XXXXXXXXX";const labels={en:{ok:"Opening WhatsApp with your request.",err:"Please complete or correct: ",intro:"Hello AES Egypt,\\nI would like to request a consultation.",name:"Name",email:"Email",phone:"Phone",company:"Company",service:"Service Needed",message:"Message"},ar:{ok:"سيتم فتح واتساب وإرسال بيانات طلبك.",err:"يرجى استكمال أو تصحيح: ",intro:"مرحبًا AES Egypt،\\nأرغب في طلب استشارة.",name:"الاسم",email:"البريد الإلكتروني",phone:"رقم الهاتف",company:"اسم الشركة",service:"الخدمة المطلوبة",message:"الرسالة"}};document.querySelectorAll(".nav-toggle").forEach((button)=>{button.addEventListener("click",()=>{const nav=document.querySelector(".main-nav");const open=nav.classList.toggle("is-open");button.setAttribute("aria-expanded",String(open));});});function clean(v){return String(v||"").trim().replace(/\\s+/g," ");}function validEmail(v){return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(v);}function formData(form){return {name:clean(form.name.value),email:clean(form.email.value),phone:clean(form.phone.value),company:clean(form.company.value),service:clean(form.service.value),message:clean(form.message.value),website:clean(form.website.value)}}function missingFields(data){const t=labels[lang];const fields=[];if(data.website)fields.push("Spam check");if(data.name.length<2)fields.push(t.name);if(!validEmail(data.email))fields.push(t.email);if(data.phone.length<6)fields.push(t.phone);if(data.company.length<2)fields.push(t.company);if(!data.service)fields.push(t.service);if(data.message.length<10)fields.push(t.message);return fields;}function message(data){const t=labels[lang];return [t.intro,"",t.name+": "+data.name,t.email+": "+data.email,t.phone+": "+data.phone,t.company+": "+data.company,t.service+": "+data.service,t.message+": "+data.message].join("\\n");}function setStatus(form,type,text){const node=form.querySelector(".form-message");node.textContent=text;node.className="form-message "+type;}function openWhatsApp(data){window.open("https://wa.me/"+number+"?text="+encodeURIComponent(message(data)),"_blank","noopener");}document.querySelectorAll("[data-contact-form]").forEach((form)=>{form.addEventListener("submit",(event)=>{event.preventDefault();const data=formData(form);const missing=missingFields(data);if(missing.length){setStatus(form,"err",labels[lang].err+missing.join(", "));return;}setStatus(form,"ok",labels[lang].ok);openWhatsApp(data);});});})();`;
 
 function write(file, contents) {
@@ -1382,7 +1419,7 @@ function cleanGenerated() {
 
 function build() {
   cleanGenerated();
-  write(path.join(outDir, "assets", "css", "style.css"), `${css}\n${contactMapCss}`);
+  write(path.join(outDir, "assets", "css", "style.css"), `${css}\n${contactMapCss}\n${trustSignalCss}`);
   write(path.join(outDir, "assets", "js", "main.js"), js);
   fs.mkdirSync(path.join(outDir, "assets", "images"), { recursive: true });
   fs.copyFileSync(uploadedAssets.logo, path.join(outDir, "assets", "images", "aes-logo.png"));

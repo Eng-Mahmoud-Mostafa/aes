@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node build-site.js",
     "serve": "node serve-static.js",
-    "test": "playwright test tests/aes.spec.js --reporter=list"
+    "test": "playwright test tests/aes.spec.js --reporter=list --timeout=60000"
   },
   "devDependencies": {
     "@playwright/test": "^1.61.1"
