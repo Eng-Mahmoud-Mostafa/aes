@@ -11,6 +11,7 @@ function contentType(file) {
   if (file.endsWith(".js")) return "application/javascript; charset=utf-8";
   if (file.endsWith(".png")) return "image/png";
   if (file.endsWith(".jpg") || file.endsWith(".jpeg")) return "image/jpeg";
+  if (file.endsWith(".webp")) return "image/webp";
   if (file.endsWith(".xml")) return "application/xml; charset=utf-8";
   if (file.endsWith(".txt")) return "text/plain; charset=utf-8";
   return "application/octet-stream";

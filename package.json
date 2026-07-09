@@ -4,11 +4,13 @@
   "private": true,
   "description": "Static bilingual website for AES Egypt.",
   "scripts": {
-    "build": "node build-site.js",
+    "optimize:images": "node optimize-images.js",
+    "build": "npm run optimize:images && node build-site.js",
     "serve": "node serve-static.js",
     "test": "playwright test tests/aes.spec.js --reporter=list --timeout=60000"
   },
   "devDependencies": {
-    "@playwright/test": "^1.61.1"
+    "@playwright/test": "^1.61.1",
+    "sharp": "^0.35.3"
   }
 }

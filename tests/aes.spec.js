@@ -13,6 +13,7 @@ function contentType(file) {
   if (file.endsWith(".js")) return "application/javascript; charset=utf-8";
   if (file.endsWith(".png")) return "image/png";
   if (file.endsWith(".jpg") || file.endsWith(".jpeg")) return "image/jpeg";
+  if (file.endsWith(".webp")) return "image/webp";
   if (file.endsWith(".xml")) return "application/xml; charset=utf-8";
   if (file.endsWith(".txt")) return "text/plain; charset=utf-8";
   return "application/octet-stream";
@@ -56,6 +57,7 @@ test("English and Arabic home pages render with assets and correct direction", a
   await expect(page.getByRole("heading", { name: /Trusted Audit/ })).toBeVisible();
   await expect(page.locator(".trust-signal-grid")).toContainText("Confidential advisory process");
   await expect(page.locator(".trust-signal-grid")).toContainText("Audit, tax, accounting, and advisory under one firm");
+  await expect(page.locator(".hero-panel source[type='image/webp']")).toHaveAttribute("srcset", /founder\.webp/);
   await expect(page.locator(".brand img")).toHaveJSProperty("complete", true);
   await expect(page.locator("html")).toHaveAttribute("dir", "ltr");
   await page.goto(`${baseUrl}/ar/`);
