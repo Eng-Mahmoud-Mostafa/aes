@@ -1,0 +1,14 @@
+{
+  "name": "aes-egypt-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static bilingual website for AES Egypt.",
+  "scripts": {
+    "build": "node build-site.js",
+    "serve": "node serve-static.js",
+    "test": "playwright test tests/aes.spec.js --reporter=list"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1"
+  }
+}
